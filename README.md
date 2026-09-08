@@ -1,7 +1,5 @@
 # Mina Mazandarani Dental Website
 
-Production foundation for the official Persian RTL website.
+Production-grade Persian RTL dental clinic website for Dr. Mina Mazandarani.
 
-Authoritative repository: `galaxy1364/sitedrminamazandarani.ir`.
-
-Read `MASTER_PROJECT_STATE.md`, `STATUS.md`, and `RESUME_STATE.md` before making changes.
+Authoritative source: this repository on `main`.
