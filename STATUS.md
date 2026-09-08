@@ -4,6 +4,7 @@
 - Authoritative repository: `galaxy1364/sitedrminamazandarani.ir`
 - Default branch: `main`
 - Repository connection verified with push/admin access.
+- Foundation files committed directly to `main` and repository contents re-read from GitHub.
 
 ## Implemented
 - RTL responsive production shell
@@ -16,13 +17,17 @@
 
 ## Verified
 - GitHub repository connection and write access verified.
-- Foundation files are being committed directly to `main`.
+- Source-of-truth governance files exist in the repository.
+- Foundation source exists in the repository.
+- Vercel account/team connection is available.
+- Vercel currently contains no project for this site.
 
 ## NOT YET VERIFIED
 - Dependency installation
 - Typecheck
 - Lint
 - Production build
+- Vercel project creation/import from this GitHub repository
 - Production deployment
 - Custom domain DNS/TLS
 
@@ -30,3 +35,4 @@
 - Real appointment persistence/integration is intentionally disabled pending approved scheduling API/database.
 - AI agent is intentionally disabled pending real knowledge source/provider and credentials.
 - No patient data may be persisted until privacy/security controls are approved.
+- Production deployment must not be claimed complete until a Vercel project is actually created/imported, built, and verified.
