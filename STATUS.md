@@ -19,33 +19,46 @@
 - Production-target metadata for `https://sitedrminamazandarani.ir`: canonical base, Open Graph, Twitter summary and relevant Persian SEO keywords
 - Next.js metadata routes for `robots.txt` and `sitemap.xml`
 - GitHub Actions production-quality workflow: Node 22, dependency install, typecheck, lint and production build
+- Generated visual media integrated into the real site source under `public/visuals/`
+- `hero-implant.webp` integrated into the premium Hero visual system
+- `ai-assistant.webp` integrated into the AI Concierge visual layer
+- `before-after.webp` integrated into the treatment visual section with an explicit concept-image disclosure so it cannot be mistaken for a real patient outcome
+- Separate `visual-media.css` layer for responsive visual integration, animated aurora lighting and reduced-motion fallback
 - Governance/status files
 
 ## Standards direction
 - Accessibility work is aligned toward WCAG 2.2 principles: keyboard operability, visible focus, reduced motion and status-message compatibility.
-- No testimonials, outcome statistics, certifications, addresses, phone numbers or patient imagery are invented.
+- No testimonials, outcome statistics, certifications, addresses, phone numbers or real patient imagery are invented.
+- AI-generated treatment imagery is not represented as clinical evidence or a real patient result.
 - Interactive treatment content is educational and explicitly not an online diagnosis or prescription.
 
 ## Verified
 - GitHub repository connection and write access verified.
-- Premium source and quality workflow exist on `main`.
+- Premium source and integrated WebP assets exist on `main`.
+- GitHub tree confirms `public/visuals/hero-implant.webp`, `public/visuals/ai-assistant.webp`, `public/visuals/before-after.webp` and `src/app/visual-media.css` on `main`.
+- GitHub Actions quality run #9 (`34284768513`) completed successfully after CI configuration fixes.
+- Dependency installation: PASS.
+- TypeScript typecheck: PASS.
+- ESLint: PASS.
+- Next.js production build: PASS.
+- Next.js 16 flat ESLint config added according to the current framework configuration model.
 - Vercel deploy endpoint previously accepted the source payload and created a preview deployment.
-- Preview deployment ID: `dpl_BH6G7iEKZCjStC31HEDNnGHvHZoo`
-- Preview URL: `https://sitedrminamazandarani-b4mgkyk34-galaxymehdi1362-7775s-projects.vercel.app`
+- Previous preview deployment ID: `dpl_BH6G7iEKZCjStC31HEDNnGHvHZoo`
+- Previous preview URL: `https://sitedrminamazandarani-b4mgkyk34-galaxymehdi1362-7775s-projects.vercel.app`
 
 ## NOT YET VERIFIED
-- GitHub Actions quality run has not started/appeared yet; the Actions API currently reports zero runs.
-- Vercel build completion/status: the connector used in this chat still returns permission errors/404 for deployment reads after the user located the correct browser account.
-- Public unauthenticated preview access
-- Runtime errors / HTTP response / visual browser QA
+- Current post-visual-integration Vercel deployment has not been verified from this chat.
+- Vercel connector used in this chat still returns `403 Forbidden` for deployment listing even after the correct browser account was located.
+- Public unauthenticated preview access for the latest commit
+- Runtime errors / HTTP response / visual browser QA for the latest commit
 - Custom domain DNS/TLS
 
 ## STOP_BLOCKER
-- Vercel connector/session permission must be refreshed before build logs and online QA can be verified from this chat.
+- Vercel connector/session permission must be refreshed before the latest `main` can be deployment-audited and browser-tested from this chat.
 - Real appointment persistence/integration is intentionally disabled pending approved scheduling API/database.
 - AI agent is intentionally disabled pending real knowledge source/provider and credentials.
 - No patient data may be persisted until privacy/security controls are approved.
 
 ## Current prohibition
 - Do not point production DNS at an unverified deployment.
-- Do not claim online booking, AI, clinic-software sync, build success, or public availability without direct evidence.
+- Do not claim online booking, AI, clinic-software sync, latest deployment success, or public availability without direct evidence.
