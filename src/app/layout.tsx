@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import "./sections.css";
 import "./premium.css";
+import "./visual-media.css";
 import { site } from "@/lib/site";
 
 const productionUrl = "https://sitedrminamazandarani.ir";
