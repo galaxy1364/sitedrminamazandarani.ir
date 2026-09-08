@@ -1,13 +1,12 @@
 # RESUME STATE
 
 ## Resume point
-1. Finish committing the existing Foundation files to `main`.
-2. Verify repository contents from GitHub.
-3. In a CI-capable environment, install exactly from the pinned dependency manifest and run typecheck, lint, and production build; record evidence.
-4. Connect this same repository to the production host and verify deployment.
-5. Configure `sitedrminamazandarani.ir` DNS/TLS only after deployment target evidence is available.
-6. Only after API details are supplied: implement clinic scheduling adapter and persistence.
-7. Only after approved knowledge source/provider: implement AI concierge with medical-safety boundaries.
+1. GitHub source connection is complete; authoritative repo is `galaxy1364/sitedrminamazandarani.ir` on `main`.
+2. Vercel team is connected but currently has no project for this site.
+3. Next permitted stage: create/import the Vercel project from this exact GitHub repository, then run and record install/typecheck/lint/build evidence.
+4. Only after a successful deployment: configure and verify `sitedrminamazandarani.ir` DNS/TLS.
+5. Only after API details are supplied: implement clinic scheduling adapter and persistence.
+6. Only after approved knowledge source/provider: implement AI concierge with medical-safety boundaries.
 
 ## Forbidden at resume
 - Do not create a parallel repository.
