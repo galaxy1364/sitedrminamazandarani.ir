@@ -1,0 +1,117 @@
+.premium-hero .hero-visual{
+  position:relative;
+  overflow:hidden;
+  isolation:isolate;
+  background:
+    linear-gradient(145deg,rgba(242,246,255,.20),rgba(239,252,248,.16)),
+    url('/visuals/hero-implant.webp') center/cover no-repeat;
+}
+.premium-hero .hero-visual::before{
+  content:"";
+  position:absolute;
+  inset:-18%;
+  z-index:-1;
+  background:
+    radial-gradient(circle at 74% 18%,rgba(126,98,255,.38),transparent 28%),
+    radial-gradient(circle at 18% 72%,rgba(61,222,199,.32),transparent 30%),
+    radial-gradient(circle at 52% 52%,rgba(84,169,255,.22),transparent 38%);
+  filter:blur(28px);
+  animation:visualAurora 14s ease-in-out infinite alternate;
+}
+.premium-hero .tooth-stage{
+  background:rgba(255,255,255,.16);
+  border:1px solid rgba(255,255,255,.56);
+  backdrop-filter:blur(18px) saturate(135%);
+  box-shadow:0 24px 80px rgba(47,39,109,.18),inset 0 1px 0 rgba(255,255,255,.65);
+}
+.premium-hero .floating-card,.premium-hero .hero-status-card{
+  background:rgba(255,255,255,.58);
+  border-color:rgba(255,255,255,.76);
+  backdrop-filter:blur(20px) saturate(145%);
+  box-shadow:0 18px 50px rgba(40,48,110,.16);
+}
+
+.premium-split .clinical-animation{
+  position:relative;
+  overflow:hidden;
+  isolation:isolate;
+  min-height:520px;
+  background:
+    linear-gradient(180deg,rgba(25,30,71,.08),rgba(13,21,61,.18)),
+    url('/visuals/before-after.webp') center/cover no-repeat;
+  border:1px solid rgba(255,255,255,.72);
+  box-shadow:0 30px 90px rgba(48,55,122,.16);
+}
+.premium-split .clinical-animation::before{
+  content:"تصویر مفهومی تولیدشده با هوش مصنوعی — جایگزین نتیجه واقعی بیمار نیست";
+  position:absolute;
+  right:18px;
+  bottom:18px;
+  z-index:8;
+  max-width:310px;
+  padding:10px 14px;
+  border-radius:999px;
+  background:rgba(13,18,48,.62);
+  color:#fff;
+  font-size:10px;
+  line-height:1.7;
+  backdrop-filter:blur(14px);
+  border:1px solid rgba(255,255,255,.28);
+}
+.premium-split .jaw,.premium-split .implant-sequence{
+  opacity:.15;
+  filter:blur(.4px);
+}
+.premium-split .animation-label,.premium-split .animation-legend{
+  z-index:9;
+}
+
+.premium-ai-card{
+  position:relative;
+  overflow:hidden;
+  isolation:isolate;
+  background:
+    linear-gradient(120deg,rgba(16,21,56,.94) 0%,rgba(24,35,86,.90) 46%,rgba(42,31,93,.84) 100%),
+    url('/visuals/ai-assistant.webp') left center/48% auto no-repeat;
+  color:#fff;
+}
+.premium-ai-card::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  z-index:-1;
+  background:
+    radial-gradient(circle at 16% 28%,rgba(88,224,210,.20),transparent 26%),
+    radial-gradient(circle at 82% 24%,rgba(145,112,255,.30),transparent 30%);
+  animation:aiGlowDrift 12s ease-in-out infinite alternate;
+}
+.premium-ai-card h2,.premium-ai-card strong{color:#fff}
+.premium-ai-card>p,.premium-ai-card .ai-capability-grid span{color:rgba(237,242,255,.78)}
+.premium-ai-card .ai-capability-grid>div,.premium-ai-card .integration-banner{
+  background:rgba(255,255,255,.09);
+  border:1px solid rgba(255,255,255,.16);
+  backdrop-filter:blur(16px);
+}
+
+@keyframes visualAurora{
+  0%{transform:translate3d(-2%,-1%,0) scale(1)}
+  50%{transform:translate3d(3%,2%,0) scale(1.06)}
+  100%{transform:translate3d(-1%,4%,0) scale(1.03)}
+}
+@keyframes aiGlowDrift{
+  from{transform:translate3d(-2%,0,0) scale(1)}
+  to{transform:translate3d(2%,-2%,0) scale(1.05)}
+}
+@media(max-width:900px){
+  .premium-split .clinical-animation{min-height:420px}
+  .premium-ai-card{background-size:auto 62%}
+}
+@media(max-width:620px){
+  .premium-hero .hero-visual{min-height:520px;background-position:60% center}
+  .premium-split .clinical-animation{min-height:360px}
+  .premium-split .clinical-animation::before{right:12px;left:12px;max-width:none;border-radius:18px}
+  .premium-ai-card{background-image:linear-gradient(140deg,rgba(16,21,56,.96),rgba(36,30,86,.92)),url('/visuals/ai-assistant.webp');background-size:auto 46%;background-position:left bottom}
+}
+@media(prefers-reduced-motion:reduce){
+  .premium-hero .hero-visual::before,.premium-ai-card::after{animation:none}
+}
