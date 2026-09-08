@@ -1,16 +1,43 @@
 import { NextResponse } from "next/server";
 
-function isIranianMobile(value: unknown): value is string {
-  return typeof value === "string" && /^09\d{9}$/.test(value);
-}
+const allowedServices = new Set(["ایمپلنت", "جراحی", "زیبایی", "ترمیم و روکش", "ویزیت تخصصی"]);
+const allowedTimes = new Set(["صبح", "ظهر", "عصر"]);
 
 export async function POST(request: Request) {
-  const body = await request.json().catch(() => null) as Record<string, unknown> | null;
-  if (!body || typeof body.name !== "string" || body.name.trim().length < 2 || !isIranianMobile(body.phone)) {
-    return NextResponse.json({ ok: false, error: "invalid_input" }, { status: 400 });
+  let body: unknown;
+  try {
+    body = await request.json();
+  } catch {
+    return NextResponse.json({ ok: false, code: "INVALID_JSON" }, { status: 400 });
   }
 
-  // STOP_BLOCKER: No clinic scheduling API/database credential has been provided.
-  // Do not persist patient data until a real, approved backend and privacy policy are connected.
-  return NextResponse.json({ ok: true, mode: "integration_pending" }, { status: 202 });
+  if (!body || typeof body !== "object") {
+    return NextResponse.json({ ok: false, code: "INVALID_PAYLOAD" }, { status: 400 });
+  }
+
+  const data = body as Record<string, unknown>;
+  const name = typeof data.name === "string" ? data.name.trim() : "";
+  const phone = typeof data.phone === "string" ? data.phone.trim() : "";
+  const service = typeof data.service === "string" ? data.service : "";
+  const preferredTime = typeof data.preferredTime === "string" ? data.preferredTime : "";
+  const note = typeof data.note === "string" ? data.note.trim() : "";
+
+  if (name.length < 2 || name.length > 120) {
+    return NextResponse.json({ ok: false, code: "INVALID_NAME" }, { status: 422 });
+  }
+  if (!/^09\d{9}$/.test(phone)) {
+    return NextResponse.json({ ok: false, code: "INVALID_PHONE" }, { status: 422 });
+  }
+  if (!allowedServices.has(service) || !allowedTimes.has(preferredTime) || note.length > 1000) {
+    return NextResponse.json({ ok: false, code: "INVALID_SELECTION" }, { status: 422 });
+  }
+
+  return NextResponse.json(
+    {
+      ok: false,
+      code: "CLINIC_INTEGRATION_NOT_CONFIGURED",
+      message: "سامانه نوبت‌دهی کلینیک هنوز به API واقعی متصل نشده است و هیچ داده‌ای ذخیره نشد."
+    },
+    { status: 503 }
+  );
 }
