@@ -1,4 +1,5 @@
 import { ReservationForm } from "@/components/ReservationForm";
+import { TreatmentStudio } from "@/components/TreatmentStudio";
 import { careJourney, faqs, services, site } from "@/lib/site";
 
 export default function Home() {
@@ -13,8 +14,8 @@ export default function Home() {
         </a>
         <nav aria-label="منوی اصلی">
           <a href="#services">خدمات</a>
+          <a href="#studio">استودیو درمان</a>
           <a href="#journey">مسیر درمان</a>
-          <a href="#experience">تجربه درمان</a>
           <a href="#faq">سوالات</a>
           <a href="#appointment">رزرو نوبت</a>
         </nav>
@@ -22,20 +23,26 @@ export default function Home() {
       </header>
 
       <div id="content">
-        <section id="top" className="hero section-pad">
+        <section id="top" className="hero section-pad premium-hero">
+          <div className="hero-noise" aria-hidden="true" />
           <div className="hero-copy">
             <div className="eyebrow">Modern Oral & Maxillofacial Care</div>
             <h1>دندانپزشکی آینده،<br /><span>آرام‌تر، دقیق‌تر، انسانی‌تر.</span></h1>
             <p>{site.description}</p>
             <div className="hero-actions">
               <a className="primary" href="#appointment">رزرو نوبت آنلاین</a>
-              <a className="ghost" href="#services">مشاهده خدمات</a>
+              <a className="ghost" href="#studio">دیدن تجربه تعاملی</a>
             </div>
             <div className="trust-row">
               <span>✓ طراحی Mobile-first</span>
               <span>✓ اعتبارسنجی ورودی فعال</span>
               <span>✓ معماری آماده اتصال به نرم‌افزار کلینیک</span>
               <span>✓ بدون ذخیره‌سازی نمایشی اطلاعات بیمار</span>
+            </div>
+            <div className="hero-proof-grid" aria-label="ویژگی‌های تجربه دیجیتال">
+              <div><strong>01</strong><span>Clinical-first UX</span></div>
+              <div><strong>02</strong><span>Accessible by design</span></div>
+              <div><strong>03</strong><span>Integration-ready</span></div>
             </div>
           </div>
 
@@ -46,6 +53,7 @@ export default function Home() {
               <div className="tooth">✧</div>
               <div className="scan-ring one" />
               <div className="scan-ring two" />
+              <div className="scan-line" />
             </div>
             <div className="floating-card card-a">
               <b>AI Concierge</b>
@@ -55,6 +63,10 @@ export default function Home() {
             <div className="floating-card card-b">
               <b>Digital Workflow</b>
               <span>از ویزیت تا پیگیری</span>
+            </div>
+            <div className="floating-card card-c">
+              <b>Doctor-led</b>
+              <span>تصمیم بالینی فقط با پزشک</span>
             </div>
             <div className="hero-status-card">
               <span className="status-dot" aria-hidden="true" />
@@ -70,23 +82,24 @@ export default function Home() {
           <div><strong>حریم خصوصی</strong><span>بدون ذخیره داده تا تأیید backend</span></div>
         </section>
 
-        <section id="services" className="section-pad services-section">
+        <section id="services" className="section-pad services-section premium-services">
           <div className="section-head">
-            <div><span className="eyebrow">خدمات تخصصی</span><h2>مسیر درمان، واضح و قابل فهم</h2></div>
-            <p>هر خدمت با توضیح شفاف، مسیر درمان و فضای آماده برای ویدئو یا انیمیشن علمی اختصاصی طراحی شده است.</p>
+            <div><span className="eyebrow">خدمات تخصصی</span><h2>هر درمان، یک مسیر روشن و طراحی‌شده</h2></div>
+            <p>ساختار هر خدمت برای توضیح مرحله‌ای، محتوای علمی، ویدئو و اتصال آینده به workflow کلینیک آماده شده است.</p>
           </div>
           <div className="service-grid service-grid-six">
             {services.map((service, index) => (
-              <article className="service-card" key={service.title}>
-                <span className="service-index">{String(index + 1).padStart(2, "0")}</span>
-                <i aria-hidden="true">{service.icon}</i>
+              <article className="service-card premium-service-card" key={service.title}>
+                <div className="service-card-top"><span className="service-index">{String(index + 1).padStart(2, "0")}</span><i aria-hidden="true">{service.icon}</i></div>
                 <h3>{service.title}</h3>
                 <p>{service.text}</p>
-                <a href="#appointment">درخواست مشاوره ←</a>
+                <a href="#appointment">درخواست ارزیابی <span aria-hidden="true">↗</span></a>
               </article>
             ))}
           </div>
         </section>
+
+        <div id="studio"><TreatmentStudio /></div>
 
         <section id="journey" className="section-pad journey-section">
           <div className="section-head">
@@ -104,7 +117,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section id="experience" className="section-pad split-section">
+        <section id="experience" className="section-pad split-section premium-split">
           <div className="clinical-animation" aria-label="انیمیشن شماتیک مراحل ایمپلنت">
             <div className="animation-label">Implant Treatment Story</div>
             <div className="jaw upper" aria-hidden="true"><span /><span /><span /><span /></div>
@@ -127,10 +140,12 @@ export default function Home() {
         </section>
 
         <section className="ai-section section-pad">
-          <div className="ai-visual-card">
+          <div className="ai-visual-card premium-ai-card">
             <div className="ai-pulse" aria-hidden="true" />
+            <div className="ai-orbit orbit-one" aria-hidden="true" />
+            <div className="ai-orbit orbit-two" aria-hidden="true" />
             <span className="eyebrow">AI Concierge Architecture</span>
-            <h2>دستیار هوشمند برای راهنمایی و رزرو، با مرزهای پزشکی روشن</h2>
+            <h2>هوشمندی واقعی یعنی کمک به مسیر بیمار، نه نمایش مصنوعی</h2>
             <p>دستیار آینده سایت می‌تواند سوالات عمومی را از knowledge base تأییدشده پاسخ دهد، خدمت مناسب برای بررسی را معرفی کند و کاربر را وارد مسیر رزرو کند؛ اما تشخیص یا تجویز مستقل نخواهد داشت.</p>
             <div className="ai-capability-grid">
               <div><strong>FAQ</strong><span>پاسخ از منبع تأییدشده</span></div>
@@ -141,10 +156,10 @@ export default function Home() {
           </div>
         </section>
 
-        <section id="appointment" className="section-pad appointment-section">
+        <section id="appointment" className="section-pad appointment-section premium-appointment">
           <div className="appointment-copy">
             <span className="eyebrow">Online Reservation</span>
-            <h2>درخواست نوبت در کمتر از یک دقیقه</h2>
+            <h2>درخواست نوبت، ساده و بدون وعده ساختگی</h2>
             <p>فرم فقط داده معتبر می‌پذیرد. هیچ اطلاعات بیماری تا زمان اتصال backend، سیاست حریم خصوصی و کنترل دسترسی تأییدشده ذخیره نمی‌شود.</p>
             <div className="appointment-notes">
               <span>۱. اطلاعات اولیه را وارد کنید</span>
@@ -175,10 +190,10 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="final-cta section-pad">
+        <section className="final-cta section-pad premium-final-cta">
           <div>
             <span className="eyebrow">Next Step</span>
-            <h2>شروع درمان با یک مسیر روشن</h2>
+            <h2>شروع درمان با یک تجربه دیجیتال در سطح برند</h2>
             <p>اطلاعات اولیه را آماده کنید؛ پس از فعال‌شدن اتصال واقعی نوبت‌دهی، درخواست‌ها مستقیماً وارد workflow کلینیک خواهند شد.</p>
           </div>
           <a className="primary" href="#appointment">رفتن به رزرو نوبت</a>
@@ -189,7 +204,7 @@ export default function Home() {
             <div className="brand footer-brand"><span className="brand-mark">M</span><span>{site.doctor}<small>{site.specialty}</small></span></div>
             <p>وب‌سایت رسمی کلینیک — آدرس، تلفن و اطلاعات قانونی فقط پس از تأیید نهایی در این بخش درج می‌شوند.</p>
           </div>
-          <div><b>دسترسی سریع</b><a href="#services">خدمات</a><a href="#journey">مسیر درمان</a><a href="#appointment">نوبت آنلاین</a><a href="#faq">سوالات متداول</a></div>
+          <div><b>دسترسی سریع</b><a href="#services">خدمات</a><a href="#studio">استودیو درمان</a><a href="#appointment">نوبت آنلاین</a><a href="#faq">سوالات متداول</a></div>
           <div><b>وضعیت اتصال</b><span>Appointment API — Pending</span><span>AI Concierge — Pending</span><span>Clinic Software — Pending</span></div>
         </footer>
       </div>
@@ -197,7 +212,7 @@ export default function Home() {
       <div className="mobile-dock" aria-label="دسترسی سریع موبایل">
         <a href="#services">خدمات</a>
         <a className="mobile-dock-main" href="#appointment">رزرو نوبت</a>
-        <a href="#faq">سوالات</a>
+        <a href="#studio">استودیو</a>
       </div>
     </main>
   );
