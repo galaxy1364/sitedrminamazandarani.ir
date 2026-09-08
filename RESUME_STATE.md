@@ -2,15 +2,18 @@
 
 ## Resume point
 1. GitHub source connection is complete; authoritative repo is `galaxy1364/sitedrminamazandarani.ir` on `main`.
-2. Vercel team is connected but currently has no project for this site.
-3. Next permitted stage: create/import the Vercel project from this exact GitHub repository, then run and record install/typecheck/lint/build evidence.
-4. Only after a successful deployment: configure and verify `sitedrminamazandarani.ir` DNS/TLS.
-5. Only after API details are supplied: implement clinic scheduling adapter and persistence.
-6. Only after approved knowledge source/provider: implement AI concierge with medical-safety boundaries.
+2. Expanded homepage/content/UI is committed on `main`.
+3. Vercel accepted a full preview deployment from the same source payload.
+4. Current preview deployment: `dpl_BH6G7iEKZCjStC31HEDNnGHvHZoo`.
+5. Current preview URL: `https://sitedrminamazandarani-b4mgkyk34-galaxymehdi1362-7775s-projects.vercel.app`.
+6. Current blocker: the connected Vercel Team denies deployment inspection/share-link creation until Team access is approved. Build status, logs and online QA are therefore not yet evidence-backed.
+7. After Team approval: verify build logs, HTTP response, runtime errors, responsive behavior, navigation, appointment API validation, then configure custom domain DNS/TLS.
+8. Only after scheduling API details are supplied: implement clinic scheduling adapter and persistence.
+9. Only after approved knowledge source/provider: implement AI concierge with medical-safety boundaries.
 
 ## Forbidden at resume
-- Do not create a parallel repository.
+- Do not create a parallel repository or separate site implementation.
 - Do not invent appointment confirmations.
 - Do not persist patient data in local JSON/demo storage.
-- Do not claim integration/build/deployment success without real evidence.
-- Do not change dependencies, schema, routes, packages, native config, or sync behavior without evidence and explicit stage approval.
+- Do not claim build/deployment/runtime success without real evidence.
+- Do not change dependencies, schema, native config, sync behavior or custom domain before evidence and the appropriate stage approval.
