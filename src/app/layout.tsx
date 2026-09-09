@@ -5,6 +5,7 @@ import "./premium.css";
 import "./visual-media.css";
 import "./aurora-sections.css";
 import "./mobile-polish.css";
+import "./showcase.css";
 import { site } from "@/lib/site";
 
 const productionUrl = "https://sitedrminamazandarani.ir";
