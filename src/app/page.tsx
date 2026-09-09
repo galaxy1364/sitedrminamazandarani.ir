@@ -1,5 +1,6 @@
 import { ReservationForm } from "@/components/ReservationForm";
 import { TreatmentStudio } from "@/components/TreatmentStudio";
+import { VisualExperienceHub } from "@/components/VisualExperienceHub";
 import { careJourney, faqs, services, site } from "@/lib/site";
 
 export default function Home() {
@@ -13,11 +14,11 @@ export default function Home() {
           <span>{site.doctor}<small>{site.specialty}</small></span>
         </a>
         <nav aria-label="منوی اصلی">
-          <a href="#services">خدمات</a>
+          <a href="/services">خدمات</a>
+          <a href="/about">درباره</a>
+          <a href="/articles">مقالات</a>
           <a href="#studio">استودیو درمان</a>
-          <a href="#journey">مسیر درمان</a>
-          <a href="#faq">سوالات</a>
-          <a href="#appointment">رزرو نوبت</a>
+          <a href="/contact">تماس</a>
         </nav>
         <a className="nav-cta" href="#appointment">رزرو آنلاین</a>
       </header>
@@ -97,7 +98,10 @@ export default function Home() {
               </article>
             ))}
           </div>
+          <a className="ghost inline-action" href="/services">مشاهده صفحه کامل خدمات</a>
         </section>
+
+        <VisualExperienceHub />
 
         <div id="studio"><TreatmentStudio /></div>
 
@@ -204,13 +208,13 @@ export default function Home() {
             <div className="brand footer-brand"><span className="brand-mark">M</span><span>{site.doctor}<small>{site.specialty}</small></span></div>
             <p>وب‌سایت رسمی کلینیک — آدرس، تلفن و اطلاعات قانونی فقط پس از تأیید نهایی در این بخش درج می‌شوند.</p>
           </div>
-          <div><b>دسترسی سریع</b><a href="#services">خدمات</a><a href="#studio">استودیو درمان</a><a href="#appointment">نوبت آنلاین</a><a href="#faq">سوالات متداول</a></div>
+          <div><b>دسترسی سریع</b><a href="/services">خدمات</a><a href="/about">درباره پزشک</a><a href="/articles">مقالات</a><a href="/contact">تماس و مراجعه</a></div>
           <div><b>وضعیت اتصال</b><span>Appointment API — Pending</span><span>AI Concierge — Pending</span><span>Clinic Software — Pending</span></div>
         </footer>
       </div>
 
       <div className="mobile-dock" aria-label="دسترسی سریع موبایل">
-        <a href="#services">خدمات</a>
+        <a href="/services">خدمات</a>
         <a className="mobile-dock-main" href="#appointment">رزرو نوبت</a>
         <a href="#studio">استودیو</a>
       </div>
