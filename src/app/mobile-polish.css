@@ -1,0 +1,115 @@
+@media(max-width:620px){
+  body{padding-bottom:74px;overflow-x:hidden}
+  .section-pad{padding:52px 16px}
+
+  .nav-shell{
+    top:6px;
+    width:calc(100% - 20px);
+    min-height:58px;
+    margin-top:6px;
+    padding:7px 9px;
+    border-radius:18px;
+    gap:10px;
+  }
+  .brand{gap:8px;font-size:11px;min-width:0}
+  .brand>span:last-child{min-width:0}
+  .brand small{font-size:8px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:180px}
+  .brand-mark{width:36px;height:36px;border-radius:11px;font-size:13px;flex:0 0 auto}
+  .nav-cta{font-size:10px;padding:8px 11px;border-radius:12px;white-space:nowrap}
+
+  .hero{min-height:auto;padding-top:44px;gap:30px}
+  .hero h1{font-size:38px;line-height:1.24;margin:18px 0}
+  .hero-copy>p{font-size:15px;line-height:2}
+  .hero-actions{margin:22px 0;gap:8px}
+  .hero-actions .primary,.hero-actions .ghost{padding:11px 13px;font-size:11px}
+  .trust-row{font-size:10px;line-height:1.9}
+  .hero-proof-grid{display:none}
+  .hero-visual{height:390px;border-radius:26px}
+  .premium-hero .hero-visual{min-height:390px!important}
+  .floating-card{padding:12px 13px;border-radius:15px;max-width:150px}
+  .floating-card b{font-size:11px}.floating-card span{font-size:9px}.floating-card em{font-size:7px}
+  .hero-status-card{right:12px;bottom:12px;max-width:170px;padding:9px 11px;border-radius:14px}
+  .hero-status-card strong{font-size:9px}.hero-status-card small{font-size:7px}
+
+  .principles-strip{width:calc(100% - 24px);gap:8px;margin-bottom:12px}
+  .principles-strip>div{padding:14px 16px;border-radius:18px}
+  .principles-strip strong{font-size:12px}.principles-strip span{font-size:9px}
+
+  .section-head{gap:12px;margin-bottom:22px}
+  .section-head h2,.split-section h2,.appointment-section h2{font-size:32px;line-height:1.35}
+  .section-head>p{font-size:12px;line-height:1.9}
+
+  .service-grid-six{gap:10px}
+  .premium-service-card,.service-card{min-height:235px;padding:20px;border-radius:24px}
+  .premium-service-card h3{margin-top:26px;font-size:19px}
+  .service-card p{font-size:12px;line-height:1.9}
+  .service-card-top i{width:46px;height:46px;border-radius:14px;font-size:22px}
+  .premium-service-card a{font-size:11px;padding-top:12px}
+
+  .studio-shell{padding:16px;border-radius:26px}
+  .studio-heading{gap:10px;margin-bottom:18px}
+  .studio-heading h2{font-size:40px;line-height:1.05;margin-top:10px}
+  .studio-heading p{font-size:11px;line-height:1.9}
+  .studio-tabs{gap:8px;margin-bottom:10px}
+  .studio-tabs button{padding:12px;border-radius:16px}
+  .studio-tabs span{font-size:12px}.studio-tabs small{font-size:8px}
+  .studio-stage{padding:18px;gap:22px;border-radius:20px}
+  .studio-copy h3{font-size:28px;line-height:1.42;margin:12px 0}
+  .studio-copy>p{font-size:11px;line-height:1.9}
+  .studio-steps{margin:20px 0;gap:7px}
+  .studio-steps>div{padding:10px 8px;border-radius:13px}
+  .studio-cta{font-size:11px;padding:10px 14px}
+  .studio-visual{min-height:260px;border-radius:22px}
+  .core-tooth{width:108px;height:136px}.core-tooth span{font-size:40px}
+  .ring-a{width:190px;height:190px}.ring-b{width:245px;height:245px}
+  .metric-chip{padding:8px 9px;border-radius:12px}.metric-chip small{font-size:7px}.metric-chip strong{font-size:8px}
+  .chip-one{top:12px;right:12px}.chip-two{bottom:12px;right:12px}
+
+  .premium-split{gap:28px}
+  .premium-split .clinical-animation{
+    height:auto!important;
+    min-height:0!important;
+    aspect-ratio:4/5;
+    border-radius:26px;
+    background-size:cover!important;
+    background-position:center top!important;
+  }
+  .premium-split .jaw,.premium-split .implant-sequence,.premium-split .animation-legend{display:none!important}
+  .premium-split .clinical-animation::before{
+    right:10px!important;left:10px!important;bottom:10px!important;
+    padding:8px 10px!important;border-radius:13px!important;font-size:8px!important;line-height:1.6!important
+  }
+  .animation-label{top:12px;left:12px;padding:6px 9px;font-size:8px}
+  .experience-copy p,.experience-copy li{font-size:12px;line-height:1.9}
+
+  .journey-grid{gap:10px}
+  .journey-card{min-height:190px;padding:20px;border-radius:22px}
+  .journey-card h3{font-size:18px;margin:16px 0 6px}.journey-card p{font-size:11px;line-height:1.9}
+
+  .ai-visual-card{padding:28px 18px 30px;border-radius:26px}
+  .ai-visual-card h2{font-size:30px;line-height:1.4}.ai-visual-card>p{font-size:11px;line-height:1.9}
+  .ai-capability-grid{gap:8px;margin-top:20px}.ai-capability-grid>div{padding:15px;border-radius:16px}
+  .ai-capability-grid strong{font-size:14px}.ai-capability-grid span{font-size:9px}
+  .integration-banner{font-size:8px;line-height:1.7}
+
+  .appointment-section{padding:28px 16px!important;border-radius:26px;gap:24px}
+  .appointment-copy>p,.ai-box p{font-size:11px;line-height:1.9}
+  .reservation{padding:18px;border-radius:22px}
+
+  .faq-list{gap:9px}.faq-list details{border-radius:18px;padding:0 16px}.faq-list summary{padding:16px 0;font-size:12px}.faq-list p{font-size:11px;line-height:1.9}
+
+  .premium-final-cta{min-height:430px!important;border-radius:26px!important;margin-bottom:26px!important}
+  .premium-final-cta>div{padding:16px!important;border-radius:18px!important}
+  .final-cta h2{font-size:30px;line-height:1.4}.final-cta p{font-size:11px;line-height:1.9}
+
+  .footer{gap:26px;margin-top:20px;padding-bottom:34px}.footer p,.footer a,.footer span{font-size:10px;line-height:1.8}
+
+  .mobile-dock{
+    left:10px;right:10px;bottom:8px;
+    padding:6px;
+    border-radius:18px;
+    grid-template-columns:1fr 1.25fr 1fr;
+  }
+  .mobile-dock a{padding:8px 6px;font-size:10px;min-height:42px}
+  .mobile-dock-main{border-radius:13px}
+}
