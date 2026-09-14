@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import "./globals.css";
 import "./sections.css";
 import "./premium.css";
@@ -10,6 +10,14 @@ import "./quality.css";
 import "./world-class.css";
 import { site } from "@/lib/site";
 import { canonicalDomainConfigured, siteUrl } from "@/lib/seo";
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  viewportFit: "cover",
+  colorScheme: "light",
+  themeColor: "#F8FAFC"
+};
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
@@ -24,6 +32,15 @@ export const metadata: Metadata = {
     "دندانپزشکی"
   ],
   manifest: "/manifest.webmanifest",
+  icons: {
+    icon: "/icon.svg",
+    shortcut: "/icon.svg"
+  },
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: "default",
+    title: site.doctor
+  },
   robots: {
     index: canonicalDomainConfigured,
     follow: true,
@@ -81,7 +98,7 @@ const jsonLd = JSON.stringify(structuredData).replace(/</g, "\\u003c");
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="fa" dir="rtl">
+    <html lang="fa-IR" dir="rtl">
       <head>
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: jsonLd }} />
       </head>
