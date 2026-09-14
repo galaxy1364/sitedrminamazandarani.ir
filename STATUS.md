@@ -1,64 +1,52 @@
 # STATUS
 
-## Repository
-- Authoritative repository: `galaxy1364/sitedrminamazandarani.ir`
-- Default branch: `main`
-- Repository connection verified with push/admin access.
-- All current work remains in-place on the same repository and branch.
+## Authoritative path
+- Repository: `galaxy1364/sitedrminamazandarani.ir`
+- Branch: `main`
+- Vercel project: `sitedrminamazandarani-clinic`
+- Current public alias: `https://sitedrminamazandarani-clinic.vercel.app`
+- Old parallel Vercel project: deleted by user
 
 ## Implemented
-- Persian RTL responsive production shell
-- Premium multi-layer visual system with glass depth, ambient gradients, responsive motion and mobile dock
-- Hero, six service cards, care journey, implant animation, AI concierge architecture, appointment form, FAQ, final CTA, footer
-- Interactive `TreatmentStudio` with four doctor-led treatment pathways and keyboard-compatible native controls
-- Appointment server-side input validation endpoint
-- Honest integration-pending behavior: no fake appointment confirmation and no patient persistence
-- Reduced-motion handling
-- Keyboard focus states and skip-to-content accessibility path
-- Evidence-safe integration wording; no UI claim that clinic software is already connected
-- Production-target metadata for `https://sitedrminamazandarani.ir`: canonical base, Open Graph, Twitter summary and relevant Persian SEO keywords
-- Next.js metadata routes for `robots.txt` and `sitemap.xml`
-- GitHub Actions production-quality workflow: Node 22, dependency install, typecheck, lint and production build
-- Generated visual media integrated into the real site source under `public/visuals/`
-- `hero-implant.webp` integrated into the premium Hero visual system
-- `ai-assistant.webp` integrated into the AI Concierge visual layer
-- `before-after.webp` integrated into the treatment visual section with an explicit concept-image disclosure so it cannot be mistaken for a real patient outcome
-- Separate `visual-media.css` layer for responsive visual integration, animated aurora lighting and reduced-motion fallback
-- Governance/status files
+- Persian RTL responsive site with shared navigation/footer
+- Premium pastel/glass/aurora visual system
+- Hero, services, treatment studio, care journey, patient education, FAQ and contact routes
+- Real site routes: `/services`, `/about`, `/articles`, `/contact`
+- Four conceptual visual assets integrated under `public/visuals/`
+- Above-the-fold conceptual media moved to `next/image` where applicable
+- Concept imagery explicitly disclosed and not represented as real patient outcomes
+- Appointment UI changed to privacy-first offline state: no name, phone or medical note collection before approved backend
+- Appointment API returns 503 without parsing request body and uses `Cache-Control: no-store`
+- Shared evidence-safe patient-facing copy; engineering/debug language removed from main UX
+- WCAG-oriented skip link, visible focus, target sizing, reduced motion and mobile safe-area handling
+- Mobile dock receives safe-area spacing and page scroll padding to reduce focus/content obstruction
+- Security response headers: `nosniff`, strict-origin referrer policy, SAMEORIGIN frame policy and restrictive camera/microphone/geolocation permissions
+- SEO metadata helper with route-specific canonicals
+- Preview indexing guarded until `NEXT_PUBLIC_SITE_URL` is explicitly configured
+- WebSite / Person / Organization JSON-LD with only verified facts
+- Dynamic sitemap/robots URL derived from configured site URL
+- Web app manifest and SVG icon
+- GitHub Actions quality workflow remains the production quality gate
 
-## Standards direction
-- Accessibility work is aligned toward WCAG 2.2 principles: keyboard operability, visible focus, reduced motion and status-message compatibility.
-- No testimonials, outcome statistics, certifications, addresses, phone numbers or real patient imagery are invented.
-- AI-generated treatment imagery is not represented as clinical evidence or a real patient result.
-- Interactive treatment content is educational and explicitly not an online diagnosis or prescription.
+## 2026 global-audit targets
+- WCAG 2.2 AA baseline, with selected AAA-oriented ergonomics such as 44px target sizing where practical
+- Core Web Vitals targets: LCP <= 2.5s, INP <= 200ms, CLS <= 0.1 at p75; source optimizations applied but field/lab metrics still require measurement
+- Patient-facing content must not expose internal integration/debug terminology
+- No indexing of an unverified temporary production identity
+- No patient-data collection until privacy/security/backend controls exist
 
-## Verified
-- GitHub repository connection and write access verified.
-- Premium source and integrated WebP assets exist on `main`.
-- GitHub tree confirms `public/visuals/hero-implant.webp`, `public/visuals/ai-assistant.webp`, `public/visuals/before-after.webp` and `src/app/visual-media.css` on `main`.
-- GitHub Actions quality run #9 (`34284768513`) completed successfully after CI configuration fixes.
-- Dependency installation: PASS.
-- TypeScript typecheck: PASS.
-- ESLint: PASS.
-- Next.js production build: PASS.
-- Next.js 16 flat ESLint config added according to the current framework configuration model.
-- Vercel deploy endpoint previously accepted the source payload and created a preview deployment.
-- Previous preview deployment ID: `dpl_BH6G7iEKZCjStC31HEDNnGHvHZoo`
-- Previous preview URL: `https://sitedrminamazandarani-b4mgkyk34-galaxymehdi1362-7775s-projects.vercel.app`
-
-## NOT YET VERIFIED
-- Current post-visual-integration Vercel deployment has not been verified from this chat.
-- Vercel connector used in this chat still returns `403 Forbidden` for deployment listing even after the correct browser account was located.
-- Public unauthenticated preview access for the latest commit
-- Runtime errors / HTTP response / visual browser QA for the latest commit
-- Custom domain DNS/TLS
+## Awaiting verification
+- Latest GitHub Actions run for the exact current `main` commit
+- Latest Vercel deployment status for the exact current `main` commit
+- Browser/runtime QA of the post-audit build
+- Lab/field Core Web Vitals measurements
+- Custom-domain DNS/TLS and `NEXT_PUBLIC_SITE_URL`
 
 ## STOP_BLOCKER
-- Vercel connector/session permission must be refreshed before the latest `main` can be deployment-audited and browser-tested from this chat.
-- Real appointment persistence/integration is intentionally disabled pending approved scheduling API/database.
-- AI agent is intentionally disabled pending real knowledge source/provider and credentials.
-- No patient data may be persisted until privacy/security controls are approved.
+- Do not activate patient-data collection or appointment persistence until the clinic scheduling API/database, privacy policy, access control, retention and security requirements are approved.
+- Do not activate AI chat until a verified knowledge source/provider and credentials exist.
+- Do not publish invented address, phone, hours, qualifications, testimonials or patient outcomes.
+- Do not claim custom-domain SEO/indexing readiness until DNS/TLS and canonical URL are verified.
 
-## Current prohibition
-- Do not point production DNS at an unverified deployment.
-- Do not claim online booking, AI, clinic-software sync, latest deployment success, or public availability without direct evidence.
+## Current resume point
+Run CI/build verification for the latest `main`, confirm the Vercel deployment, then perform runtime/mobile/route QA. Only after those pass should custom-domain activation be the next deployment step.
