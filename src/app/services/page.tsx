@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { ConceptVisual } from "@/components/ConceptVisual";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
@@ -34,7 +35,7 @@ export default function ServicesPage() {
                 <small>{String(index + 1).padStart(2, "0")}</small>
                 <h2>{item.title}</h2>
                 <p>{item.text}</p>
-                <a href="/#appointment">وضعیت درخواست نوبت <span aria-hidden="true">↗</span></a>
+                <Link href="/#appointment">وضعیت درخواست نوبت <span aria-hidden="true">↗</span></Link>
               </article>
             ))}
           </div>
@@ -45,13 +46,13 @@ export default function ServicesPage() {
             <span className="eyebrow">Treatment Story</span>
             <h2>نمایش مرحله‌ای درمان</h2>
             <p>این تصویر مفهومی برای توضیح روند کلی درمان است و نتیجه واقعی بیمار را نشان نمی‌دهد.</p>
-            <a href="/#experience">مشاهده توضیح درمان</a>
+            <Link href="/#experience">مشاهده توضیح درمان</Link>
           </article>
           <article className="concept-card visual-ai">
             <span className="eyebrow">Patient Education</span>
             <h2>راهنمای آموزشی بیمار</h2>
             <p>پاسخ‌های عمومی و محتوای آموزشی برای آمادگی بهتر پیش از مراجعه.</p>
-            <a href="/articles">مرکز آموزش</a>
+            <Link href="/articles">مرکز آموزش</Link>
           </article>
         </section>
 
