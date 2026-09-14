@@ -1,4 +1,5 @@
 import type { MetadataRoute } from "next";
+import { canonicalDomainConfigured, siteUrl } from "@/lib/seo";
 
 export default function robots(): MetadataRoute.Robots {
   return {
@@ -6,7 +7,7 @@ export default function robots(): MetadataRoute.Robots {
       userAgent: "*",
       allow: "/"
     },
-    sitemap: "https://sitedrminamazandarani.ir/sitemap.xml",
-    host: "https://sitedrminamazandarani.ir"
+    sitemap: `${siteUrl}/sitemap.xml`,
+    ...(canonicalDomainConfigured ? { host: siteUrl } : {})
   };
 }
