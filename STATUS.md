@@ -7,56 +7,75 @@
 - Current public alias: `https://sitedrminamazandarani-clinic.vercel.app`
 - Old parallel Vercel project: deleted by user
 
-## Implemented
-- Persian RTL responsive site with shared navigation/footer
-- Premium pastel/glass/aurora visual system
-- Hero, services, treatment studio, care journey, patient education, FAQ and contact routes
-- Real site routes: `/services`, `/about`, `/articles`, `/contact`
-- Four conceptual visual assets integrated under `public/visuals/`
-- Above-the-fold conceptual media moved to `next/image` where applicable
-- Concept imagery explicitly disclosed and not represented as real patient outcomes
-- Patient-facing engineering/debug language removed from primary UX
-- Appointment UI changed to privacy-first offline state: no name, phone or medical note collection before approved backend
-- Appointment API returns 503 without parsing request body and uses `Cache-Control: no-store`
-- WCAG-oriented skip link, visible focus, 44px interaction targets where practical, reduced motion and mobile safe-area handling
-- Mobile dock receives safe-area spacing and page scroll padding to reduce focus/content obstruction
-- Security response headers: `nosniff`, strict-origin referrer policy, SAMEORIGIN frame policy and restrictive camera/microphone/geolocation permissions
-- SEO metadata helper with route-specific canonicals
-- Preview indexing guarded until `NEXT_PUBLIC_SITE_URL` is explicitly configured
-- WebSite / Person / Organization JSON-LD with only verified facts
-- Dynamic sitemap/robots URL derived from configured site URL
-- Web app manifest and SVG icon
-- No new runtime dependencies added by this audit
-
-## 2026 global-audit targets
-- WCAG 2.2 AA baseline, with selected AAA-oriented ergonomics such as 44px target sizing where practical
-- Core Web Vitals target thresholds: LCP <= 2.5s, INP <= 200ms, CLS <= 0.1 at p75
-- Patient-facing content must not expose internal integration/debug terminology
-- No indexing of an unverified temporary production identity
-- No patient-data collection until privacy/security/backend controls exist
-
-## Verified for audited source
-- Audited source commit: `d9b755264f712c143cafaf8c442e89ff38173d8c`
-- GitHub Actions Production Quality run #52 (`34838105836`): SUCCESS
+## Current world-class release
+- Release commit: `117257d2dd44176a55387a1cf36cd7acb5f29f06`
+- GitHub Actions Production Quality run #60 (`34841130179`): SUCCESS
 - Dependency install: PASS
 - TypeScript typecheck: PASS
 - ESLint: PASS
 - Next.js production build: PASS
-- GitHub commit status `Vercel`: SUCCESS for the audited source commit
+- GitHub commit status `Vercel`: SUCCESS for the release commit
+
+## Implemented
+- Persian RTL responsive site and web-app shell with shared navigation/footer
+- Apple-inspired spatial hierarchy with Liquid Glass restricted primarily to functional control layers
+- Premium clinical white / obsidian visual system with dynamic indigo, cyan and emerald ambient gradients
+- Purposeful tactile micro-interactions with reduced-motion support
+- Advanced floating navigation with services menu, 3D Smile Lab, comparison gallery, doctor, patient portal, finance and emergency-guide entry points
+- FA active language state; EN/AR represented as not-yet-active until professionally reviewed translation exists
+- Currency UI for installment math without exchange-rate claims
+- Interactive spatial tooth/jaw experience with treatment-selection states
+- Educational digital shade selector without claiming clinical shade determination
+- Interactive conceptual comparison slider using disclosed non-patient imagery
+- AI / telehealth / imaging modules represented as integration-ready but intentionally not activated without provider, protocol, privacy and security controls
+- Privacy-first disabled medical-image upload state
+- Booking architecture showing clinic/location, schedule, OTP and final-confirmation stages without fake appointment confirmation
+- Local-only installment arithmetic based on a user-entered amount; no price table, finance offer or interest claim is invented
+- Insurance / Shetab-Shaparak / deposit / USDT medical-travel adapters shown only as possible integrations, not as currently accepted payment methods
+- Material QR / Batch verification UI that never confirms authenticity without an official manufacturer data source
+- Social proof architecture that refuses to fabricate patient stories, reviews or verified badges
+- Patient portal architecture with future OTP/passkey, RBAC and transport-security requirements
+- Smart-arrival architecture for Neshan, Balad, Google Maps, Snapp and Waze, disabled until an official clinic address is verified
+- PWA install progressive enhancement based on browser `beforeinstallprompt`
+- Compliance-ready footer without invented certifications, hotline, address, phone, hours, social accounts or qualifications
+- Existing conceptual media retained and explicitly disclosed as conceptual, not real patient evidence
+- Existing `/services`, `/about`, `/articles`, `/contact` routes retained
+- Appointment API remains privacy-first and returns 503 without parsing patient data
+- Security response headers and conditional SEO/indexing remain in place
+
+## Standards direction used in this release
+- WCAG 2.2 focus visibility / focus-not-obscured / target sizing direction
+- High-contrast main content with accessibility-oriented fallbacks and `prefers-contrast`
+- `prefers-reduced-motion` support for animated spatial effects
+- Apple HIG 2025–2026 guidance: Liquid Glass used sparingly for controls/navigation, not as a blanket content treatment
+- Core Web Vitals target thresholds remain: LCP <= 2.5s, INP <= 200ms, CLS <= 0.1 at p75
+
+## Evidence boundaries
+The following requested concepts are NOT published as facts until verified:
+- `99.8% Success Rate`
+- `15,000+ Implants`
+- `Certified Swiss & German Materials`
+- 24/7 emergency hotline
+- specific certifications or memberships
+- live Google Review scores or patient stories
+- accepted insurance plans
+- accepted Shetab/Shaparak/crypto payment methods
+- live traffic or parking capacity
+- real clinic branches, official address, phone or working hours
+- real-time AI diagnosis, pain triage or X-ray assessment
 
 ## NOT YET VERIFIED
-- Runtime/browser fetch of the latest Vercel deployment from this connector; direct Vercel project/deployment lookup still returns an account/session mismatch/404 despite GitHub Vercel status success
-- Lab or field Core Web Vitals measurements; source has been optimized but no metric score is claimed
-- Cross-browser visual QA after the audited deployment
+- Direct runtime/browser fetch of the current public alias from this connector. GitHub reports Vercel deployment SUCCESS, while the Vercel connector session still cannot resolve the project/alias for inspection.
+- Cross-browser visual QA on the exact release after deployment
+- Lab or field Core Web Vitals measurements
 - Custom-domain DNS/TLS and `NEXT_PUBLIC_SITE_URL`
-- Final address, phone, hours, legal/privacy and analytics-consent copy
+- Final clinic contact/legal/privacy/certification content
 
 ## STOP_BLOCKER
-- Do not activate patient-data collection or appointment persistence until the clinic scheduling API/database, privacy policy, access control, retention and security requirements are approved.
-- Do not activate AI chat until a verified knowledge source/provider and credentials exist.
-- Do not publish invented address, phone, hours, qualifications, testimonials or patient outcomes.
-- Do not claim custom-domain SEO/indexing readiness until DNS/TLS and canonical URL are verified.
-- Do not claim Core Web Vitals pass until measured at lab/field level.
+- Do not activate patient data collection, medical image upload or appointment persistence until backend/privacy/security controls are approved.
+- Do not activate AI diagnosis, triage or image interpretation without an approved medical protocol, provider and human oversight.
+- Do not publish invented clinical statistics, reviews, materials, certifications, address, phone, hours, insurance coverage or payment acceptance.
+- Do not claim WCAG certification, Core Web Vitals pass or runtime/browser pass without measured evidence.
 
 ## Current resume point
-The audited source builds successfully and Vercel reports deployment success. Next: visual/runtime QA on the live alias, then custom-domain DNS/TLS + `NEXT_PUBLIC_SITE_URL`, then re-verify metadata/robots/sitemap and measure Core Web Vitals.
+The world-class spatial release builds successfully and Vercel reports deployment success. Immediate next step: visual/runtime QA on the live alias using browser screenshots or a refreshed Vercel connector, then custom-domain DNS/TLS + `NEXT_PUBLIC_SITE_URL`, then measured Core Web Vitals and final evidence-backed production content.
