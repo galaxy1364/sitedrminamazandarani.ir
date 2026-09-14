@@ -1,8 +1,10 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import Link from "next/link";
 import { ReservationForm } from "@/components/ReservationForm";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
+import { SpatialClinicalPlatform } from "@/components/SpatialClinicalPlatform";
 import { TreatmentStudio } from "@/components/TreatmentStudio";
 import { VisualExperienceHub } from "@/components/VisualExperienceHub";
 import { careJourney, faqs, services, site } from "@/lib/site";
@@ -23,27 +25,27 @@ export default function Home() {
         <section id="top" className="hero section-pad premium-hero" aria-labelledby="hero-title">
           <div className="hero-noise" aria-hidden="true" />
           <div className="hero-copy">
-            <div className="eyebrow">Oral & Maxillofacial Care</div>
-            <h1 id="hero-title">درمان آگاهانه،<br /><span>با توضیح روشن و تصمیم پزشک‌محور.</span></h1>
-            <p>{site.description}</p>
+            <div className="eyebrow">Next-generation Oral & Maxillofacial Care</div>
+            <h1 id="hero-title">نسل بعدی دندانپزشکی دیجیتال؛<br /><span>آرام‌تر، دقیق‌تر، شخصی‌سازی‌شده‌تر.</span></h1>
+            <p>تجربه‌ای مدرن برای شناخت خدمات، طراحی مسیر درمان و آماده‌سازی مراجعه؛ تصمیم پزشکی نهایی فقط پس از ارزیابی بالینی انجام می‌شود.</p>
             <div className="hero-actions">
               <a className="primary" href="#appointment">درخواست نوبت</a>
-              <a className="ghost" href="#studio">آشنایی با مسیر درمان</a>
+              <a className="ghost" href="#smile-simulator">ورود به 3D Smile Lab</a>
             </div>
             <div className="trust-row" aria-label="اصول تجربه بیمار">
-              <span>✓ تصمیم بالینی با پزشک</span>
-              <span>✓ مسیر درمان قابل‌فهم</span>
-              <span>✓ محتوای سازگار با موبایل</span>
-              <span>✓ عدم دریافت داده پزشکی در نسخه فعلی</span>
+              <span>✓ Doctor-led clinical decisions</span>
+              <span>✓ Privacy-first architecture</span>
+              <span>✓ Concept imagery clearly disclosed</span>
+              <span>✓ Mobile & accessibility oriented</span>
             </div>
-            <div className="hero-proof-grid" aria-label="اصول طراحی تجربه">
-              <div><strong>۰۱</strong><span>ارزیابی تخصصی</span></div>
-              <div><strong>۰۲</strong><span>توضیح مرحله‌ای</span></div>
-              <div><strong>۰۳</strong><span>پیگیری ساختاریافته</span></div>
+            <div className="hero-proof-grid" aria-label="اصول اعتماد">
+              <div><strong>Verified</strong><span>فقط ادعاهای قابل راستی‌آزمایی</span></div>
+              <div><strong>Private</strong><span>عدم دریافت داده سلامت در نسخه فعلی</span></div>
+              <div><strong>Doctor-led</strong><span>AI جایگزین پزشک نیست</span></div>
             </div>
           </div>
 
-          <div className="hero-visual" aria-label="تصویر مفهومی ایمپلنت و درمان دیجیتال">
+          <div className="hero-visual" aria-label="تصویر مفهومی درمان دیجیتال">
             <Image
               className="hero-media"
               src="/visuals/hero-implant.webp"
@@ -53,24 +55,24 @@ export default function Home() {
               sizes="(max-width: 900px) 100vw, 48vw"
             />
             <div className="hero-media-overlay" aria-hidden="true" />
-            <span className="concept-disclosure hero-disclosure">تصویر مفهومی</span>
-            <div className="floating-card card-a"><b>ارزیابی تخصصی</b><span>شروع مسیر با بررسی شرایط فردی</span></div>
-            <div className="floating-card card-b"><b>مسیر درمان</b><span>توضیح مرحله‌به‌مرحله گزینه‌ها</span></div>
-            <div className="floating-card card-c"><b>پیگیری</b><span>مراقبت پس از درمان طبق نظر پزشک</span></div>
+            <span className="concept-disclosure hero-disclosure">Concept · not a patient result</span>
+            <div className="floating-card card-a"><b>3D Treatment Planning</b><span>نمایش مفهومی مسیر درمان</span></div>
+            <div className="floating-card card-b"><b>Digital Smile Experience</b><span>طراحی رابط برای گفت‌وگوی بهتر</span></div>
+            <div className="floating-card card-c"><b>Doctor-led</b><span>تصمیم بالینی فقط با پزشک</span></div>
           </div>
         </section>
 
         <section className="principles-strip" aria-label="اصول درمان">
-          <div><strong>شفافیت</strong><span>مراحل درمان قابل فهم</span></div>
-          <div><strong>دقت</strong><span>تصمیم‌گیری پس از ارزیابی پزشک</span></div>
+          <div><strong>شفافیت</strong><span>توضیح قابل فهم مراحل</span></div>
+          <div><strong>دقت</strong><span>ارزیابی پیش از تصمیم درمانی</span></div>
           <div><strong>پیگیری</strong><span>مسیر مشخص پس از درمان</span></div>
-          <div><strong>حریم خصوصی</strong><span>عدم دریافت داده پزشکی تا فعال‌شدن زیرساخت رسمی</span></div>
+          <div><strong>حریم خصوصی</strong><span>فعال‌سازی داده فقط پس از زیرساخت رسمی</span></div>
         </section>
 
         <section id="services" className="section-pad services-section premium-services" aria-labelledby="services-title">
           <div className="section-head">
-            <div><span className="eyebrow">خدمات تخصصی</span><h2 id="services-title">هر درمان، یک مسیر روشن</h2></div>
-            <p>هدف این بخش کمک به شناخت بهتر گزینه‌های درمانی پیش از معاینه است؛ انتخاب نهایی درمان به ارزیابی بالینی وابسته است.</p>
+            <div><span className="eyebrow">Clinical Services</span><h2 id="services-title">خدمات تخصصی با مسیر درمان قابل‌فهم</h2></div>
+            <p>هر خدمت برای آموزش بیمار، نمایش مرحله‌ای و اتصال آینده به workflow واقعی کلینیک طراحی شده است؛ بدون وعده نتیجه ثابت برای همه.</p>
           </div>
           <div className="service-grid service-grid-six">
             {services.map((service, index) => (
@@ -78,12 +80,14 @@ export default function Home() {
                 <div className="service-card-top"><span className="service-index">{String(index + 1).padStart(2, "0")}</span><i aria-hidden="true">{service.icon}</i></div>
                 <h3>{service.title}</h3>
                 <p>{service.text}</p>
-                <a href="/services">جزئیات خدمت <span aria-hidden="true">↗</span></a>
+                <Link href="/services">جزئیات خدمت <span aria-hidden="true">↗</span></Link>
               </article>
             ))}
           </div>
-          <a className="ghost inline-action" href="/services">مشاهده همه خدمات</a>
+          <Link className="ghost inline-action" href="/services">مشاهده همه خدمات</Link>
         </section>
+
+        <SpatialClinicalPlatform />
 
         <VisualExperienceHub />
 
@@ -92,7 +96,7 @@ export default function Home() {
         <section id="journey" className="section-pad journey-section" aria-labelledby="journey-title">
           <div className="section-head">
             <div><span className="eyebrow">Care Journey</span><h2 id="journey-title">از ارزیابی تا پیگیری درمان</h2></div>
-            <p>این مسیر یک چارچوب عمومی برای آشنایی بیمار است و ممکن است بر اساس شرایط بالینی هر فرد تغییر کند.</p>
+            <p>این مسیر یک چارچوب عمومی برای آشنایی بیمار است و بر اساس شرایط بالینی هر فرد می‌تواند تغییر کند.</p>
           </div>
           <div className="journey-grid">
             {careJourney.map((item) => (
@@ -122,7 +126,7 @@ export default function Home() {
               <li>جزئیات درمان به شرایط فردی و معاینه وابسته است.</li>
               <li>مراقبت‌های پس از درمان طبق دستور پزشک تعیین می‌شوند.</li>
             </ul>
-            <a className="ghost inline-action" href="/services">آشنایی با خدمات</a>
+            <Link className="ghost inline-action" href="/services">آشنایی با خدمات</Link>
           </div>
         </section>
 
@@ -133,25 +137,25 @@ export default function Home() {
             <div className="ai-orbit orbit-two" aria-hidden="true" />
             <span className="eyebrow">Digital Care Guide</span>
             <h2 id="digital-guide-title">راهنمای دیجیتال برای فهم بهتر مسیر درمان</h2>
-            <p>این بخش برای توضیح عمومی خدمات، آمادگی مراجعه و هدایت به محتوای آموزشی طراحی شده است و هرگز جایگزین تشخیص یا تجویز پزشک نیست.</p>
+            <p>این بخش برای توضیح عمومی خدمات، آمادگی مراجعه و هدایت به محتوای آموزشی طراحی شده و جایگزین تشخیص یا تجویز پزشک نیست.</p>
             <div className="ai-capability-grid">
-              <div><strong>آموزش</strong><span>پاسخ‌های عمومی و قابل فهم</span></div>
-              <div><strong>هدایت</strong><span>دسترسی سریع به خدمت مرتبط</span></div>
-              <div><strong>ایمنی</strong><span>بدون تشخیص و تجویز مستقل</span></div>
+              <div><strong>Education</strong><span>پاسخ‌های عمومی و قابل فهم</span></div>
+              <div><strong>Routing</strong><span>هدایت به خدمت مرتبط</span></div>
+              <div><strong>Safety</strong><span>بدون تشخیص و تجویز مستقل</span></div>
             </div>
-            <div className="integration-banner">گفت‌وگوی هوشمند فقط پس از اتصال به منبع دانش تأییدشده فعال خواهد شد.</div>
+            <div className="integration-banner">گفت‌وگوی هوشمند پس از اتصال منبع دانش تأییدشده و guardrail بالینی فعال خواهد شد.</div>
           </div>
         </section>
 
         <section id="appointment" className="section-pad appointment-section premium-appointment" aria-labelledby="appointment-title">
           <div className="appointment-copy">
-            <span className="eyebrow">Appointment</span>
-            <h2 id="appointment-title">درخواست نوبت، بدون دریافت زودهنگام اطلاعات بیمار</h2>
-            <p>تا زمان فعال‌شدن سامانه رسمی، این وب‌سایت اطلاعات تماس یا توضیحات پزشکی بیمار را دریافت نمی‌کند.</p>
+            <span className="eyebrow">Instant Booking Architecture</span>
+            <h2 id="appointment-title">رزرو آنلاین فقط وقتی «واقعی» است که سیستم کلینیک آن را تأیید کند</h2>
+            <p>تا زمان اتصال تقویم پزشک، OTP و backend رسمی، این وب‌سایت اطلاعات تماس یا توضیحات پزشکی بیمار را دریافت نمی‌کند.</p>
             <div className="appointment-notes">
-              <span>۱. ابتدا خدمت موردنظر را بشناسید</span>
-              <span>۲. اطلاعات رسمی مراجعه را بررسی کنید</span>
-              <span>۳. رزرو آنلاین پس از اتصال سامانه رسمی فعال می‌شود</span>
+              <span>۱. شناخت خدمت و آماده‌سازی مراجعه</span>
+              <span>۲. اتصال آینده به schedule و OTP رسمی</span>
+              <span>۳. تأیید نوبت فقط پس از پاسخ سامانه کلینیک</span>
             </div>
           </div>
           <ReservationForm />
@@ -175,19 +179,19 @@ export default function Home() {
         <section className="final-cta section-pad premium-final-cta">
           <div>
             <span className="eyebrow">Next Step</span>
-            <h2>اطلاعات درمان را روشن و مرحله‌به‌مرحله دنبال کنید</h2>
-            <p>برای آشنایی با خدمات، مسیر درمان و اطلاعات مراجعه از بخش‌های تخصصی سایت استفاده کنید.</p>
+            <h2>یک تجربه دیجیتال لوکس، با مرز روشن بین طراحی و پزشکی واقعی</h2>
+            <p>اطلاعات رسمی تماس، عکس واقعی پزشک و کلینیک، گواهی‌ها، قیمت‌ها و سرویس‌های متصل پس از دریافت مستندات واقعی در همین معماری فعال می‌شوند.</p>
           </div>
-          <a className="primary" href="/contact">اطلاعات مراجعه</a>
+          <Link className="primary" href="/contact">اطلاعات مراجعه</Link>
         </section>
 
         <SiteFooter />
       </div>
 
       <nav className="mobile-dock" aria-label="دسترسی سریع موبایل">
-        <a href="/services">خدمات</a>
+        <Link href="/services">خدمات</Link>
         <a className="mobile-dock-main" href="#appointment">درخواست نوبت</a>
-        <a href="#studio">استودیو</a>
+        <a href="#smile-simulator">3D Lab</a>
       </nav>
     </main>
   );
