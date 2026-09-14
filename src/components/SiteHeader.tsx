@@ -16,22 +16,26 @@ export function SiteHeader({ current = "home" }: { current?: Current }) {
           <summary>خدمات</summary>
           <div className="nav-services-panel">
             <Link href="/services" aria-current={current === "services" ? "page" : undefined}>همه خدمات تخصصی</Link>
-            <Link href="/#smile-simulator">تجربه تعاملی درمان</Link>
-            <Link href="/#gallery">گالری مقایسه‌ای</Link>
-            <Link href="/#smart-care">AI و تله‌هلث</Link>
+            <Link href="/#smile-simulator">مدل تعاملی درمان</Link>
+            <Link href="/#gallery">مقایسه تصویری مفهومی</Link>
+            <Link href="/#smart-care">راهنمای دیجیتال</Link>
           </div>
         </details>
-        <Link className="nav-priority" href="/#smile-simulator">3D Smile Lab</Link>
-        <Link className="nav-priority" href="/#gallery">Before / After</Link>
+        <Link className="nav-priority" href="/#smile-simulator">Smile Lab</Link>
+        <Link className="nav-priority" href="/#gallery">Visual Compare</Link>
         <Link className="nav-secondary" href="/about" aria-current={current === "about" ? "page" : undefined}>پزشک</Link>
         <Link className="nav-secondary" href="/#patient-portal">پرتال بیمار</Link>
         <Link className="nav-secondary" href="/#finance">هزینه و اقساط</Link>
         <Link className="nav-secondary" href="/articles" aria-current={current === "articles" ? "page" : undefined}>آموزش</Link>
       </nav>
 
-      <div className="world-nav-tools">
-        <span className="utility-switch locale" aria-label="وضعیت زبان‌ها"><b>FA</b><span>EN</span><span>AR</span></span>
-        <span className="utility-switch currency" aria-label="واحد مالی فعلی"><b>IRR</b><span>AED</span><span>USD</span></span>
+      <div className="world-nav-tools" aria-label="ابزارهای سایت">
+        <span className="utility-status" aria-label="زبان فعلی فارسی؛ انگلیسی و عربی هنوز فعال نیستند">
+          <b>FA</b><span aria-hidden="true">EN · AR</span>
+        </span>
+        <span className="utility-status" aria-label="واحد مرجع نمایش فعلی تومان؛ واحدهای دیگر فقط در ابزار محاسبه قابل انتخاب‌اند">
+          <b>تومان</b>
+        </span>
         <Link className="world-triage" href="/#smart-care">راهنمای فوریت</Link>
         <Link className="nav-cta" href="/#appointment">درخواست نوبت</Link>
       </div>
