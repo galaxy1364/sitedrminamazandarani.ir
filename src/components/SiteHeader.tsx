@@ -12,32 +12,16 @@ export function SiteHeader({ current = "home" }: { current?: Current }) {
       </Link>
 
       <nav className="world-nav-links" aria-label="منوی اصلی">
-        <details className="nav-services-menu">
-          <summary>خدمات</summary>
-          <div className="nav-services-panel">
-            <Link href="/services" aria-current={current === "services" ? "page" : undefined}>همه خدمات تخصصی</Link>
-            <Link href="/#smile-simulator">مدل تعاملی درمان</Link>
-            <Link href="/#gallery">مقایسه تصویری مفهومی</Link>
-            <Link href="/#smart-care">راهنمای دیجیتال</Link>
-          </div>
-        </details>
-        <Link className="nav-priority" href="/#smile-simulator">Smile Lab</Link>
-        <Link className="nav-priority" href="/#gallery">Visual Compare</Link>
-        <Link className="nav-secondary" href="/about" aria-current={current === "about" ? "page" : undefined}>پزشک</Link>
-        <Link className="nav-secondary" href="/#patient-portal">پرتال بیمار</Link>
-        <Link className="nav-secondary" href="/#finance">هزینه و اقساط</Link>
-        <Link className="nav-secondary" href="/articles" aria-current={current === "articles" ? "page" : undefined}>آموزش</Link>
+        <Link href="/services" aria-current={current === "services" ? "page" : undefined}>خدمات</Link>
+        <Link href="/#smile-simulator">نقشه تعاملی درمان</Link>
+        <Link href="/#visual-explorer">نمایشگر تصویری</Link>
+        <Link href="/about" aria-current={current === "about" ? "page" : undefined}>درباره پزشک</Link>
+        <Link href="/articles" aria-current={current === "articles" ? "page" : undefined}>آموزش بیمار</Link>
+        <Link href="/contact" aria-current={current === "contact" ? "page" : undefined}>تماس</Link>
       </nav>
 
-      <div className="world-nav-tools" aria-label="ابزارهای سایت">
-        <span className="utility-status" aria-label="زبان فعلی فارسی؛ انگلیسی و عربی هنوز فعال نیستند">
-          <b>FA</b><span aria-hidden="true">EN · AR</span>
-        </span>
-        <span className="utility-status" aria-label="واحد مرجع نمایش فعلی تومان؛ واحدهای دیگر فقط در ابزار محاسبه قابل انتخاب‌اند">
-          <b>تومان</b>
-        </span>
-        <Link className="world-triage" href="/#smart-care">راهنمای فوریت</Link>
-        <Link className="nav-cta" href="/#appointment">درخواست نوبت</Link>
+      <div className="world-nav-tools">
+        <Link className="nav-cta" href="/contact">اطلاعات مراجعه</Link>
       </div>
     </header>
   );
