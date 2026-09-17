@@ -15,22 +15,22 @@ const treatments: Record<TreatmentKey, { title: string; subtitle: string; detail
   implant: {
     title: "ایمپلنت",
     subtitle: "Implant planning",
-    detail: "نمایش مفهومی مسیر ارزیابی، طرح درمان و بازسازی؛ تصمیم نهایی فقط پس از معاینه و تصویربرداری لازم انجام می‌شود."
+    detail: "مرور آموزشی مسیر ارزیابی، تصویربرداری، طرح درمان و بازسازی. تصمیم نهایی درمان فقط پس از معاینه پزشک انجام می‌شود."
   },
   veneer: {
     title: "طراحی لبخند",
     subtitle: "Smile design",
-    detail: "پیش‌نمایش آموزشی تناسب فرم و رنگ؛ نتیجه واقعی به شرایط دندان، بافت و طرح درمان اختصاصی وابسته است."
+    detail: "نمایش آموزشی فرم و رنگ برای گفت‌وگوی بهتر با پزشک؛ این ابزار نتیجه درمان را پیش‌بینی نمی‌کند."
   },
   endo: {
     title: "درمان ریشه",
     subtitle: "Endodontic pathway",
-    detail: "نمایش آموزشی ساختار دندان و مسیر ارزیابی درد؛ این ابزار تشخیص پزشکی یا جایگزین معاینه نیست."
+    detail: "مرور آموزشی ساختار دندان و مراحل معمول ارزیابی درد؛ این ابزار تشخیص پزشکی نیست."
   },
   restorative: {
     title: "ترمیم و روکش",
     subtitle: "Restorative workflow",
-    detail: "نمایش مفهومی بازسازی فرم و عملکرد دندان با تأکید بر ارزیابی پزشک‌محور و حفظ بافت سالم."
+    detail: "مرور آموزشی بازسازی فرم و عملکرد دندان با تأکید بر ارزیابی بالینی و حفظ بافت سالم."
   }
 };
 
@@ -63,18 +63,18 @@ const currencies: Currency[] = ["تومان", "AED", "USD"];
 export function SpatialClinicalPlatform() {
   const [selectedTreatment, setSelectedTreatment] = useState<TreatmentKey>("implant");
   const [shade, setShade] = useState("A1");
-  const [compare, setCompare] = useState(50);
+  const [zoom, setZoom] = useState(108);
   const [amount, setAmount] = useState("120000000");
   const [months, setMonths] = useState(6);
   const [currency, setCurrency] = useState<Currency>("تومان");
-  const [batchCode, setBatchCode] = useState("");
-  const [notice, setNotice] = useState("برای حفظ حریم خصوصی، هیچ تصویر پزشکی یا اطلاعات بیمار در این نسخه دریافت نمی‌شود.");
   const [installPrompt, setInstallPrompt] = useState<BeforeInstallPromptEvent | null>(null);
+  const [installMessage, setInstallMessage] = useState("نصب PWA به پشتیبانی مرورگر بستگی دارد.");
 
   useEffect(() => {
     const handler = (event: Event) => {
       event.preventDefault();
       setInstallPrompt(event as BeforeInstallPromptEvent);
+      setInstallMessage("این مرورگر نصب مستقیم وب‌اپ را پشتیبانی می‌کند.");
     };
     window.addEventListener("beforeinstallprompt", handler);
     return () => window.removeEventListener("beforeinstallprompt", handler);
@@ -86,54 +86,41 @@ export function SpatialClinicalPlatform() {
     return parsed / months;
   }, [amount, months]);
 
-  const formatAmount = (value: number) => {
-    if (!value) return "—";
-    return new Intl.NumberFormat("fa-IR", { maximumFractionDigits: 0 }).format(value);
-  };
-
   const chooseTooth = (treatment: TreatmentKey) => {
     setSelectedTreatment(treatment);
-    if ("vibrate" in navigator) navigator.vibrate?.(7);
-  };
-
-  const unavailable = (feature: string) => {
-    setNotice(`${feature} پس از اتصال سرویس واقعی، تأیید حریم خصوصی و کنترل دسترسی فعال می‌شود.`);
-  };
-
-  const verifyBatch = () => {
-    setNotice(
-      batchCode.trim()
-        ? "کد فقط در مرورگر بررسی شد؛ منبع اصالت شرکت سازنده هنوز متصل نیست و هیچ تأیید اصالتی صادر نشد."
-        : "برای بررسی واقعی اصالت، ابتدا باید منبع رسمی شرکت سازنده و API معتبر متصل شود."
-    );
+    if (typeof navigator !== "undefined" && "vibrate" in navigator) navigator.vibrate?.(7);
   };
 
   const installPwa = async () => {
     if (!installPrompt) {
-      setNotice("اگر مرورگر نصب مستقیم را پیشنهاد نمی‌دهد، از گزینه Add to Home Screen / Install App در منوی مرورگر استفاده کنید.");
+      setInstallMessage("اگر دکمه نصب مرورگر ظاهر نیست، از Add to Home Screen / Install App در منوی مرورگر استفاده کنید.");
       return;
     }
     await installPrompt.prompt();
     const choice = await installPrompt.userChoice;
-    setNotice(choice.outcome === "accepted" ? "درخواست نصب به مرورگر ارسال شد." : "نصب برنامه لغو شد.");
+    setInstallMessage(choice.outcome === "accepted" ? "درخواست نصب به مرورگر ارسال شد." : "نصب توسط کاربر لغو شد.");
     setInstallPrompt(null);
   };
 
-  const comparisonStyle = { "--compare": `${compare}%` } as CSSProperties;
+  const formatAmount = (value: number) => value > 0
+    ? new Intl.NumberFormat("fa-IR", { maximumFractionDigits: 0 }).format(value)
+    : "—";
+
+  const zoomStyle = { "--visual-scale": zoom / 100 } as CSSProperties;
 
   return (
-    <div className="world-platform" aria-label="تجربه دیجیتال کلینیک">
+    <div className="world-platform" aria-label="ابزارهای تعاملی واقعی سایت">
       <section id="smile-simulator" className="world-section spatial-clinical" aria-labelledby="spatial-title">
         <div className="world-section-head">
           <div>
-            <span className="world-kicker">Spatial Clinical Experience</span>
-            <h2 id="spatial-title">مدل تعاملی درمان، بدون ادعای تشخیص</h2>
+            <span className="world-kicker">Interactive Treatment Map</span>
+            <h2 id="spatial-title">نقشه تعاملی درمان؛ واقعی در مرورگر، آموزشی در کاربرد</h2>
           </div>
-          <p>یک لایه تعاملی برای توضیح گزینه‌های درمانی؛ داده‌های نمایش‌داده‌شده آموزشی هستند و جایگزین معاینه، تصویربرداری یا طرح درمان پزشک نیستند.</p>
+          <p>روی دندان‌ها بزنید تا مسیر آموزشی مرتبط نمایش داده شود. همه تعامل‌ها داخل مرورگر اجرا می‌شوند و هیچ داده‌ای ارسال یا ذخیره نمی‌شود.</p>
         </div>
 
         <div className="spatial-grid">
-          <div className="jaw-console" aria-label="مدل تعاملی دندان‌ها">
+          <div className="jaw-console" aria-label="نقشه تعاملی دندان‌ها">
             <div className="jaw-ambient" aria-hidden="true" />
             <div className="jaw-orbit" aria-hidden="true" />
             <div className="teeth-arc" role="group" aria-label="انتخاب دندان برای نمایش مسیر درمان">
@@ -144,6 +131,7 @@ export function SpatialClinicalPlatform() {
                   className={selectedTreatment === tooth.treatment ? "tooth-node is-active" : "tooth-node"}
                   style={{ "--i": index } as CSSProperties}
                   onClick={() => chooseTooth(tooth.treatment)}
+                  aria-pressed={selectedTreatment === tooth.treatment}
                   aria-label={`دندان ${tooth.label}: ${treatments[tooth.treatment].title}`}
                 >
                   <span aria-hidden="true">◊</span>
@@ -152,158 +140,86 @@ export function SpatialClinicalPlatform() {
               ))}
             </div>
             <div className="jaw-core" aria-hidden="true"><span>✦</span></div>
-            <div className="spatial-readout">
+            <div className="spatial-readout" aria-live="polite">
               <small>{treatments[selectedTreatment].subtitle}</small>
               <strong>{treatments[selectedTreatment].title}</strong>
               <p>{treatments[selectedTreatment].detail}</p>
             </div>
           </div>
 
-          <aside className="shade-console" aria-label="راهنمای مفهومی انتخاب رنگ">
+          <aside className="shade-console" aria-label="راهنمای آموزشی انتخاب رنگ">
             <span className="world-kicker">Digital Shade Preview</span>
-            <h3>پیش‌نمایش آموزشی رنگ</h3>
-            <p>این انتخابگر فقط برای نمایش رابط کاربری و گفت‌وگوی بهتر درباره رنگ است؛ تعیین نهایی رنگ به شرایط بالینی و نور استاندارد وابسته است.</p>
+            <h3>انتخابگر آموزشی رنگ</h3>
+            <p>انتخاب شما فقط در state همین صفحه نگه داشته می‌شود و به سرور ارسال نمی‌شود. تعیین بالینی رنگ باید در نور و شرایط استاندارد انجام شود.</p>
             <div className="shade-preview" style={{ background: shades.find(([code]) => code === shade)?.[1] }}>
               <span>{shade}</span>
             </div>
-            <div className="shade-row" role="group" aria-label="انتخاب رنگ مفهومی">
+            <div className="shade-row" role="group" aria-label="انتخاب رنگ آموزشی">
               {shades.map(([code, color]) => (
-                <button key={code} type="button" className={shade === code ? "is-active" : ""} onClick={() => setShade(code)}>
+                <button key={code} type="button" className={shade === code ? "is-active" : ""} onClick={() => setShade(code)} aria-pressed={shade === code}>
                   <i style={{ background: color }} aria-hidden="true" /><span>{code}</span>
                 </button>
               ))}
             </div>
-            <div className="privacy-chip">بدون ذخیره انتخاب‌ها</div>
+            <div className="privacy-chip">Local-only · بدون ارسال داده</div>
           </aside>
         </div>
       </section>
 
-      <section id="gallery" className="world-section comparison-section" aria-labelledby="comparison-title">
+      <section id="visual-explorer" className="world-section comparison-section" aria-labelledby="visual-explorer-title">
         <div className="world-section-head">
-          <div><span className="world-kicker">Macro Comparison Lab</span><h2 id="comparison-title">اسلایدر مقایسه‌ای با افشای شفاف تصویر مفهومی</h2></div>
-          <p>برای انتشار Before/After واقعی، تصاویر استانداردشده و رضایت معتبر بیمار لازم است. تا آن زمان این رابط فقط نمونه تعاملی طراحی است.</p>
+          <div><span className="world-kicker">Clinical Visual Explorer</span><h2 id="visual-explorer-title">نمایشگر تعاملی تصویر مفهومی</h2></div>
+          <p>این ابزار واقعاً zoom را در مرورگر تغییر می‌دهد. تصویر مفهومی است و به‌عنوان Before/After یا نتیجه درمان بیمار معرفی نمی‌شود.</p>
         </div>
         <div className="comparison-layout">
-          <div className="comparison-window" style={comparisonStyle}>
-            <Image src="/visuals/before-after.webp" alt="" fill sizes="(max-width: 900px) 100vw, 62vw" className="comparison-base" />
-            <Image src="/visuals/before-after.webp" alt="" fill sizes="(max-width: 900px) 100vw, 62vw" className="comparison-reveal" />
-            <div className="comparison-line" aria-hidden="true"><span /></div>
-            <span className="comparison-label before">نمای پایه</span>
-            <span className="comparison-label after">نمای برجسته</span>
+          <div className="comparison-window" style={zoomStyle}>
+            <Image src="/visuals/before-after.webp" alt="نمای مفهومی آموزشی دندان و لثه" fill sizes="(max-width: 900px) 100vw, 62vw" className="comparison-base" style={{ transform: `scale(${zoom / 100})` }} />
             <span className="concept-seal">تصویر مفهومی — نتیجه بیمار نیست</span>
           </div>
           <div className="comparison-control">
-            <label htmlFor="compare-range">موقعیت مقایسه <strong>{compare}٪</strong></label>
-            <input id="compare-range" type="range" min="15" max="85" value={compare} onChange={(event) => setCompare(Number(event.target.value))} />
-            <div className="comparison-features"><span>Zoom-ready</span><span>Consent-gated</span><span>High-res pipeline</span></div>
+            <label htmlFor="zoom-range">بزرگ‌نمایی <strong>{zoom}٪</strong></label>
+            <input id="zoom-range" type="range" min="100" max="145" value={zoom} onChange={(event) => setZoom(Number(event.target.value))} />
+            <div className="comparison-features"><span>Local interaction</span><span>No upload</span><span>No patient data</span></div>
           </div>
         </div>
-      </section>
-
-      <section id="smart-care" className="world-section smart-hub" aria-labelledby="smart-care-title">
-        <div className="world-section-head light-head">
-          <div><span className="world-kicker">AI & Telehealth Hub</span><h2 id="smart-care-title">هوشمندی پزشکی فقط با منبع و پروتکل تأییدشده</h2></div>
-          <p>معماری سه ماژول آماده است، اما هیچ‌کدام تا اتصال سرویس واقعی و تصویب الزامات پزشکی و حریم خصوصی، تشخیص یا پرونده بیمار ایجاد نمی‌کنند.</p>
-        </div>
-        <div className="smart-card-grid">
-          <article className="smart-card emergency-card">
-            <span className="smart-icon" aria-hidden="true">✦</span><small>Emergency Triage</small><h3>راهنمای فوریت</h3>
-            <p>مسیر تصمیم‌یار عمومی با امکان تحویل به اپراتور یا پزشک؛ الگوریتم تریاژ خودکار هنوز فعال نیست.</p>
-            <button type="button" onClick={() => unavailable("تریاژ هوشمند")}>وضعیت ماژول</button>
-          </article>
-          <article className="smart-card">
-            <span className="smart-icon" aria-hidden="true">◉</span><small>WebRTC Teleconsult</small><h3>ویزیت ویدیویی</h3>
-            <p>جایگاه رزرو تله‌کانسالت بدون نصب برنامه؛ WebRTC و زمان‌بندی پزشک نیازمند backend واقعی است.</p>
-            <button type="button" onClick={() => unavailable("ویزیت ویدیویی")}>بررسی آمادگی</button>
-          </article>
-          <article className="smart-card">
-            <span className="smart-icon" aria-hidden="true">⌁</span><small>Imaging Intelligence</small><h3>آپلود OPG / تصویر داخل دهان</h3>
-            <p>برای حفاظت از داده سلامت، upload و تحلیل تصویر تا زمان تأیید privacy/security عمداً غیرفعال است.</p>
-            <button type="button" onClick={() => unavailable("اسکن و تحلیل تصویر پزشکی")}>چرا غیرفعال است؟</button>
-          </article>
-        </div>
-        <p className="world-live-notice" aria-live="polite">{notice}</p>
       </section>
 
       <section id="finance" className="world-section finance-suite" aria-labelledby="finance-title">
         <div className="world-section-head">
-          <div><span className="world-kicker">Booking & Financial Suite</span><h2 id="finance-title">معماری رزرو و مالی، بدون قیمت یا پرداخت ساختگی</h2></div>
-          <p>تقویم، OTP، بیمه و پرداخت فقط پس از اتصال provider واقعی فعال می‌شوند. محاسبه‌گر اقساط زیر صرفاً تقسیم ریاضی مبلغی است که خود کاربر وارد می‌کند.</p>
+          <div><span className="world-kicker">Local Calculator</span><h2 id="finance-title">محاسبه‌گر واقعی تقسیم مبلغ</h2></div>
+          <p>این ابزار فقط یک محاسبه ریاضی داخل مرورگر انجام می‌دهد. قیمت درمان، سود، کارمزد، بیمه یا قرارداد اقساط را تعیین نمی‌کند.</p>
         </div>
         <div className="finance-grid">
-          <article className="booking-preview">
-            <div className="booking-top"><span>Appointment Flow</span><b>Integration-ready</b></div>
-            <ol className="booking-steps">
-              <li><span>01</span><div><strong>انتخاب مرکز</strong><small>در انتظار اطلاعات رسمی شعبه</small></div></li>
-              <li><span>02</span><div><strong>انتخاب پزشک و زمان</strong><small>در انتظار schedule API</small></div></li>
-              <li><span>03</span><div><strong>تأیید OTP</strong><small>در انتظار سرویس پیامک رسمی</small></div></li>
-              <li><span>04</span><div><strong>تأیید نهایی</strong><small>فقط پس از پاسخ سامانه کلینیک</small></div></li>
-            </ol>
-            <button type="button" className="world-primary" onClick={() => unavailable("رزرو فوری و OTP")}>وضعیت رزرو آنلاین</button>
-          </article>
-
           <article className="installment-card">
-            <span className="world-kicker">Installment Math</span><h3>محاسبه‌گر اقساط</h3>
-            <label>مبلغ اعلام‌شده توسط کلینیک<input value={amount} inputMode="decimal" onChange={(event) => setAmount(event.target.value)} aria-label="مبلغ درمان" /></label>
+            <span className="world-kicker">Installment Math</span><h3>تقسیم مبلغ بر تعداد ماه</h3>
+            <label>مبلغ ورودی<input value={amount} inputMode="decimal" onChange={(event) => setAmount(event.target.value)} aria-label="مبلغ" /></label>
             <div className="inline-fields">
               <label>تعداد ماه<select value={months} onChange={(event) => setMonths(Number(event.target.value))}><option value={3}>۳</option><option value={6}>۶</option><option value={9}>۹</option><option value={12}>۱۲</option></select></label>
               <label>واحد<select value={currency} onChange={(event) => setCurrency(event.target.value as Currency)}>{currencies.map((item) => <option value={item} key={item}>{item}</option>)}</select></label>
             </div>
-            <div className="installment-result"><span>تقسیم ماهانه بدون سود/کارمزد</span><strong>{formatAmount(installment)} <small>{currency}</small></strong></div>
-            <p>این عدد پیشنهاد مالی یا قرارداد اقساط نیست؛ سود، کارمزد، بیمه و شرایط پرداخت فقط با قرارداد رسمی مشخص می‌شوند.</p>
-          </article>
-
-          <article className="payment-rail">
-            <h3>Insurance & Payment Adapters</h3><p>جایگاه اتصال فراهم است، اما هیچ روش پرداخت یا پوشش بیمه‌ای در نسخه فعلی به‌عنوان «پذیرفته‌شده» معرفی نمی‌شود.</p>
-            <div className="adapter-chips">
-              {["بیمه", "شتاب / شاپرک", "پرداخت بیعانه", "USDT · Medical Travel"].map((item) => <button type="button" key={item} onClick={() => unavailable(item)}>{item}<small>قابل اتصال</small></button>)}
-            </div>
+            <div className="installment-result"><span>تقسیم ساده ماهانه</span><strong>{formatAmount(installment)} <small>{currency}</small></strong></div>
+            <p>محاسبه فقط در حافظه همین صفحه انجام می‌شود و هیچ اطلاعات مالی به سرور ارسال نمی‌شود.</p>
           </article>
         </div>
       </section>
 
-      <section id="trust" className="world-section trust-suite" aria-labelledby="trust-title">
-        <div className="world-section-head">
-          <div><span className="world-kicker">Trust & Authenticity</span><h2 id="trust-title">اعتماد باید قابل راستی‌آزمایی باشد، نه تبلیغاتی</h2></div>
-          <p>آمار موفقیت، تعداد ایمپلنت، برند مواد، نظر بیمار و گواهی فقط زمانی نمایش داده می‌شوند که منبع قابل ممیزی وجود داشته باشد.</p>
+      <section className="world-section compliance-strip" aria-label="قابلیت نصب وب اپ">
+        <div>
+          <span className="world-kicker">PWA</span>
+          <h3>نصب وب‌اپ</h3>
+          <p>{installMessage}</p>
+          <button type="button" onClick={installPwa}>Install App</button>
         </div>
-        <div className="trust-grid">
-          <article className="auth-card">
-            <div className="qr-placeholder" aria-hidden="true">⌗</div><div><span className="world-kicker">Material Verification</span><h3>بررسی QR / Batch Code</h3><p>UI آماده اتصال به دیتابیس رسمی سازنده است؛ نسخه فعلی هیچ اصالت ساختگی تأیید نمی‌کند.</p></div>
-            <label className="batch-input"><span>Batch / QR code</span><input value={batchCode} onChange={(event) => setBatchCode(event.target.value)} placeholder="کد نمونه" /></label>
-            <button type="button" onClick={verifyBatch}>بررسی وضعیت منبع</button>
-          </article>
-          <article className="proof-gate">
-            <span>Verified Evidence Slots</span>
-            <div><strong>Success Rate</strong><small>پس از ارائه داده معتبر</small></div>
-            <div><strong>Implant Count</strong><small>پس از ممیزی پرونده/گزارش</small></div>
-            <div><strong>Material Origin</strong><small>پس از سند برند و batch</small></div>
-          </article>
-          <article className="reviews-gate">
-            <span className="world-kicker">Patient Stories</span><h3>ویدئوها و Google Reviews</h3><p>Feed زنده فقط از منبع رسمی و با badge قابل‌راستی‌آزمایی نمایش داده خواهد شد؛ هیچ review نمونه به‌عنوان نظر واقعی منتشر نمی‌شود.</p>
-            <button type="button" onClick={() => unavailable("Google Reviews و Patient Stories")}>وضعیت اتصال</button>
-          </article>
+        <div>
+          <span className="world-kicker">Privacy</span>
+          <h3>حداقل‌سازی داده</h3>
+          <p>ابزارهای این بخش بدون ارسال نام، شماره تماس، تصویر پزشکی یا پرونده سلامت کار می‌کنند.</p>
         </div>
-      </section>
-
-      <section id="patient-portal" className="world-section portal-arrival" aria-labelledby="portal-title">
-        <div className="portal-card">
-          <span className="world-kicker">Private Patient Portal</span><h2 id="portal-title">پرتال بیمار با حداقل‌سازی داده و احراز هویت امن</h2>
-          <p>این بخش به‌صورت معماری آماده است؛ ورود بیمار، پرونده، اسناد و پیام امن تا زمان انتخاب identity provider، کنترل دسترسی و سیاست نگهداری داده فعال نمی‌شوند.</p>
-          <div className="portal-pills"><span>OTP / Passkey-ready</span><span>Role-based access</span><span>Encrypted transport</span></div>
-          <button type="button" onClick={() => unavailable("پرتال بیمار")}>مشاهده وضعیت امنیت</button>
+        <div>
+          <span className="world-kicker">Language</span>
+          <h3>فارسی فعال</h3>
+          <p>نسخه عمومی فعلی فقط فارسی است تا زبان‌های نیمه‌کاره یا ترجمه‌نشده به‌عنوان قابلیت فعال نمایش داده نشوند.</p>
         </div>
-        <div id="arrival" className="arrival-card">
-          <span className="world-kicker">Smart Arrival</span><h3>مسیریابی، ترافیک و پارکینگ</h3><p>پس از تأیید آدرس رسمی می‌توان مسیریابی را به سرویس‌های مختلف و داده ترافیک/پارکینگ واقعی متصل کرد.</p>
-          <div className="map-shell" aria-label="جایگاه نقشه تا زمان تأیید آدرس"><div className="map-grid" aria-hidden="true" /><span>Official location pending</span></div>
-          <div className="map-providers">{["نشان", "بلد", "Google Maps", "Snapp", "Waze"].map((item) => <button type="button" key={item} onClick={() => unavailable(`مسیریابی ${item}`)}>{item}</button>)}</div>
-        </div>
-      </section>
-
-      <section className="world-section compliance-strip" aria-label="نصب و الزامات">
-        <div><span className="world-kicker">PWA</span><h3>Installable Clinic Experience</h3><p>Manifest و app icon فعال‌اند؛ نصب به قابلیت مرورگر کاربر وابسته است.</p><button type="button" onClick={installPwa}>Install App</button></div>
-        <div><span className="world-kicker">Compliance</span><h3>Patient Rights & Legal</h3><p>منشور حقوق بیمار، مجوزها، گواهی‌ها و hotline فقط پس از دریافت نسخه رسمی منتشر می‌شوند.</p><a href="/contact">اطلاعات مراجعه</a></div>
-        <div><span className="world-kicker">Languages</span><h3>FA · EN · AR</h3><p>فارسی فعال است؛ ترجمه کامل انگلیسی و عربی باید قبل از فعال‌سازی توسط انسان/پزشک بازبینی شود.</p><span className="language-status"><b>FA</b><i>EN</i><i>AR</i></span></div>
       </section>
     </div>
   );
